@@ -1,7 +1,14 @@
 const redis = require("redis");
 const client = redis.createClient({
-  port: 6379,
-  host: "64.227.148.202",
+  rootNodes: [
+    {
+      url: "redis://127.0.0.1:16379",
+    },
+    {
+      url: "redis://127.0.0.1:16380",
+    },
+    // ...
+  ],
 });
 client.connect();
 client.on("connect", () => {
